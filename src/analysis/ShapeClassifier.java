@@ -38,7 +38,7 @@ public class ShapeClassifier {
                 }
                 break;
             case 2:
-                shapeGuessResult = classify2Parameters(parameters[1], parameters[1]);
+                shapeGuessResult = classify2Parameters(parameters[0], parameters[1]);
                 if (shapeGuessResult.equals("Ellipse")) {
                     calcPerim = calculateEllipsePerimeter(parameters[0],parameters[1]);
                 }
@@ -48,7 +48,7 @@ public class ShapeClassifier {
                 break;
             case 3:
                 shapeGuessResult = classify3Parameters(parameters[0], parameters[1],parameters[2]);
-                calcPerim = calculateTrianglePerimeter(parameters[1], parameters[1],parameters[2]);
+                calcPerim = calculateTrianglePerimeter(parameters[0], parameters[1],parameters[2]);
                 break;
             case 4:
                 shapeGuessResult = classify4Parameters(parameters[0], parameters[1],parameters[2], parameters[3]);
@@ -99,10 +99,10 @@ public class ShapeClassifier {
         else {
             // too many bad guesses
             badGuesses++;
-            if (badGuesses >= 3) {
-                System.out.println("Bad guess limit Exceeded");
-                System.exit(1);
-            }
+//            if (badGuesses >= 3) {
+//                System.out.println("Bad guess limit Exceeded");
+//                System.exit(1);
+//            }
             return "No";
         }
     }
@@ -177,8 +177,7 @@ public class ShapeClassifier {
     private String classify2Parameters(int a, int b) {
         if (a == b) {
             return twoParamGuesses[0];
-        }
-        else if (a == 0) {
+        } else if (a == 0) {
             if (b > 0) {
                 return twoParamGuesses[1];
             }
@@ -195,10 +194,10 @@ public class ShapeClassifier {
     private String classify4Parameters(int a, int b, int c, int d) {
         if (a == b && c == d) {
             if (a != c) {
-                return fourParamGuesses[1];
+                return fourParamGuesses[0];
             }
             else
-                return fourParamGuesses[0];
+                return fourParamGuesses[1];
         }
         else if (b == d && c == a) {
             return fourParamGuesses[0];
@@ -211,7 +210,6 @@ public class ShapeClassifier {
 
     // Classify a triangle based on the length of its sides
     private String classify3Parameters(int a, int b, int c) {
-
         if ( (a < (b+c)) && (b < (a + c)) && (c < (a+b))) {
             if (a == b && b == c) {
                 return threeParamGuesses[0]; // Equilateral
