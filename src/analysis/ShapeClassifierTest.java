@@ -180,7 +180,12 @@ public class ShapeClassifierTest {
                     for (int i = MIN_VALUE; i < MAX_VALUE; i++) {
                         final Integer value = calculateRectanglePerimeter(i,i,i,i);
                         if (validateValue(m3.getKey(),value)) {
-                            parameter += "," + i + "," + i + "," + i + "," + i;
+
+                            parameter += "," + i;
+                            testValues.put(parameter,m3.getValue());
+
+                            parameter += "," + i + "," + i + "," + i;
+
                             testValues.put(parameter,m3.getValue());
                             break;
                         }
@@ -317,6 +322,16 @@ public class ShapeClassifierTest {
         }
         return testValues;
     }
+//
+//    @Test
+//    public void emptyTestCase() {
+//        final Map<String,String> lineTestCases = generateLineTestCases();
+//        for (final Map.Entry<String,String> testCase: lineTestCases.entrySet()) {
+//            final String result = shapeClassifier.evaluateGuess(testCase.getKey());
+//            Assert.assertEquals(testCase.getValue(),result);
+//            System.out.println(testCase.getKey() + ". Expected: " + testCase.getValue() + ". Got: " + result);
+//        }
+//    }
 
 
     @Test

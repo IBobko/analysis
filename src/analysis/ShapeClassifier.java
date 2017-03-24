@@ -36,6 +36,10 @@ public class ShapeClassifier {
                     shapeGuessResult = shapeGuess;
                     calcPerim = parameters[0];
                 }
+                if (shapeGuess.equals("Square")) {
+                    shapeGuessResult = shapeGuess;
+                    calcPerim = calculateSquarePerimeter(parameters[0]);
+                }
                 break;
             case 2:
                 shapeGuessResult = classify2Parameters(parameters[0], parameters[1]);
@@ -98,7 +102,7 @@ public class ShapeClassifier {
         }
         else {
             // too many bad guesses
-            badGuesses++;
+//            badGuesses++;
 //            if (badGuesses >= 3) {
 //                System.out.println("Bad guess limit Exceeded");
 //                System.exit(1);
