@@ -334,7 +334,7 @@ public class ShapeClassifierTest {
 //    }
 
 
-    @Test
+    //@Test
     public void LineTestCase() {
         final Map<String,String> lineTestCases = generateLineTestCases();
         for (final Map.Entry<String,String> testCase: lineTestCases.entrySet()) {
@@ -344,7 +344,7 @@ public class ShapeClassifierTest {
         }
     }
 
-    @Test
+    //@Test
     public void CircleTestCase() {
         final Map<String,String> testCases = generateCircleTestCases();
         for (final Map.Entry<String,String> testCase: testCases.entrySet()) {
@@ -355,7 +355,7 @@ public class ShapeClassifierTest {
     }
 
 
-    @Test
+    //@Test
     public void EllipseTestCase() {
         final Map<String,String> testCases = generateEllipseTestCases();
         for (final Map.Entry<String,String> testCase: testCases.entrySet()) {
@@ -366,7 +366,7 @@ public class ShapeClassifierTest {
     }
 
 
-    @Test
+    //@Test
     public void SquareTestCase() {
         final Map<String,String> testCases = generateSquareTestCases();
         for (final Map.Entry<String,String> testCase: testCases.entrySet()) {
@@ -376,7 +376,7 @@ public class ShapeClassifierTest {
         }
     }
 
-    @Test
+    //@Test
     public void RectangleTestCase() {
         final Map<String,String> testCases = generateRectangleTestCases();
         for (final Map.Entry<String,String> testCase: testCases.entrySet()) {
@@ -388,7 +388,7 @@ public class ShapeClassifierTest {
 
 
 
-    @Test
+    //@Test
     public void IsoscelesTestCase() {
         final Map<String,String> testCases = generateIsoscelesTestCases();
         for (final Map.Entry<String,String> testCase: testCases.entrySet()) {
@@ -398,7 +398,7 @@ public class ShapeClassifierTest {
         }
     }
 
-    @Test
+    //@Test
     public void EquilateralTestCase() {
         final Map<String,String> testCases = generateEquilateralTestCases();
         for (final Map.Entry<String,String> testCase: testCases.entrySet()) {
@@ -408,7 +408,7 @@ public class ShapeClassifierTest {
         }
     }
 
-    @Test
+    //@Test
     public void ScaleneTestCase() {
         final Map<String,String> testCases = generateScaleneTestCases();
         for (final Map.Entry<String,String> testCase: testCases.entrySet()) {
@@ -416,6 +416,88 @@ public class ShapeClassifierTest {
             Assert.assertEquals(testCase.getValue(),result);
             System.out.println(testCase.getKey() + ". Expected: " + testCase.getValue() + ". Got: " + result);
         }
+    }
+
+    @Test
+    public void whiteBoxTesting() {
+        String s1 = "Line,Small,Yes,6";
+        shapeClassifier.evaluateGuess(s1);
+
+        String s2 = "Line,Large,No,201";
+
+        shapeClassifier.evaluateGuess(s2);
+
+        String s3 = "Square,Large,Yes,202";
+
+        shapeClassifier.evaluateGuess(s3);
+
+        String s4 = "Ellipse,Small,Yes,0,1";
+
+        shapeClassifier.evaluateGuess(s4);
+
+
+
+        String s6 = "Ellipse,Small,Yes,2,1";
+
+        shapeClassifier.evaluateGuess(s6);
+
+        String s5 = "Circle,Small,Yes,2,2";
+
+        shapeClassifier.evaluateGuess(s5);
+
+
+        String s7 = "Ellipse,Small,Yes,1,0";
+
+        shapeClassifier.evaluateGuess(s7);
+
+        String s8 = "Isosceles,Small,No,2,3,3";
+
+        shapeClassifier.evaluateGuess(s8);
+
+        String s9 = "Isosceles,Small,Yes,2,3,3";
+
+        shapeClassifier.evaluateGuess(s9);
+
+
+        String s10 = "Isosceles,Small,Yes,2,3,3";
+
+        shapeClassifier.evaluateGuess(s10);
+
+        String s11 = "Equilateral,Small,Yes,2,2,2";
+
+        shapeClassifier.evaluateGuess(s11);
+
+
+        String s12 = "Scalene,Large,Yes,3,99,100";
+
+        shapeClassifier.evaluateGuess(s12);
+
+        String s13 = "Scalene,Large,Yes,10,2,1";
+
+        shapeClassifier.evaluateGuess(s13);
+
+
+        String s14 = "Rectangle,Small,Yes,1,1,2,2";
+
+        shapeClassifier.evaluateGuess(s14);
+
+
+        String s15 = "Rectangle,Small,Yes,1,1,1,1";
+
+        shapeClassifier.evaluateGuess(s15);
+
+        String s16 = "Rectangle,Small,Yes,1,2,1,2";
+
+        shapeClassifier.evaluateGuess(s16);
+
+        String s17 = "Rectangle,Small,Yes,1,2,2,1";
+
+        shapeClassifier.evaluateGuess(s17);
+
+        String s18 = "Rectangle,Small,Yes,1,2,3,4";
+
+        shapeClassifier.evaluateGuess(s18);
+
     }
 
     // P = 2 * PI *r
