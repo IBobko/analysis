@@ -1,11 +1,9 @@
-Shape, Size, Even, Param1, Param2, Param3, Param4 
-Line, Large, true, Empty, No
-Circle,	Small,	false, 1, 1, Empty, Empty
-Ellipse, Large,true,2,3, Empty, Empty
-Equilateral,Small,No,4,4,4
-Scalene,Large,Yes,21,20,4
-Isosceles,Small,No,20,20,20
+Shape,Size,Even,Param1,Param2,Param3,Param4
+Line,Large,Yes,Empty,Empty,Empty,Empty
+Circle,Small,No,1,1,Empty,Empty
+Ellipse,Large,Yes,2,3,Empty,Empty
+Equilateral,Small,No,4,4,4,Empty
+Scalene,Large,Yes,21,20,4,Empty
+Isosceles,Small,No,20,20,20,Empty
 Square,Large,Yes,404,404,404,404
 Rectangle,Large,Yes,4095,4094,4095,4094
-
-
