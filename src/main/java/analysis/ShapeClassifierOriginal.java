@@ -67,8 +67,8 @@ public class ShapeClassifierOriginal {
 		// check the shape guess
 		System.out.println("68"); if (shapeGuessResult.equals(shapeGuess))
 			{System.out.println("69"); isShapeGuessCorrect = true;}
-		else 
-			System.out.println("71"); isShapeGuessCorrect = false;
+		else {
+			System.out.println("71"); isShapeGuessCorrect = false;}
 
 		// check the size guess
 

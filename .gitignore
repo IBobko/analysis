@@ -2,3 +2,7 @@
 .evosuite
 out
 *.iml
+report
+lib
+target
+
