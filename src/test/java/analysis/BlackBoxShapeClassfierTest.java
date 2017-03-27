@@ -5,6 +5,7 @@ import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 import junitparams.mappers.CsvWithHeaderMapper;
 import org.apache.commons.lang.StringUtils;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,7 +20,7 @@ import java.util.Map;
  */
 @RunWith(JUnitParamsRunner.class)
 public class BlackBoxShapeClassfierTest {
-    private ShapeClassifier shapeClassifier;
+    private ShapeClassifierWithFixed shapeClassifier;
     private OracleProblem oracleProblem;
 
     private Integer getValue(String i) {
@@ -177,9 +178,8 @@ public class BlackBoxShapeClassfierTest {
         return "No";
     }
 
-    @Test
-    @Ignore
-    @FileParameters(value = "src/test/java/analysis/all_singles.csv", mapper = CsvWithHeaderMapper.class)
+    //@Test
+    @FileParameters(value = "/home/igor/An3/src/test/java/all_singles.csv", mapper = CsvWithHeaderMapper.class)
     public void testAllSingles(String Shape, String Size, String Even, String Param1, String Param2, String Param3, String Param4) {
 
         if (Even.equals("true")) {
@@ -191,13 +191,13 @@ public class BlackBoxShapeClassfierTest {
         String params = StringUtils.join(parameters, ",");
         String testLine = Shape + "," + Size + "," + Even;// + Param1 + "
         String result = getResult(Shape, parameters, Even, Size);
-        shapeClassifier = new ShapeClassifier();
-        System.out.println(testLine + params + " " + shapeClassifier.evaluateGuess(testLine + params) + " == " + result);
+        shapeClassifier = new ShapeClassifierWithFixed();
+        //System.out.println(testLine + params + " " + shapeClassifier.evaluateGuess(testLine + params) + " == " + result);
+        Assert.assertEquals(shapeClassifier.evaluateGuess(testLine + params),result);
     }
 
-    @Test
-    @Ignore
-    @FileParameters(value = "src/test/java/analysis/all_doubles.csv", mapper = CsvWithHeaderMapper.class)
+    //@Test
+    @FileParameters(value = "/home/igor/An3/src/test/java/all_doubles.csv", mapper = CsvWithHeaderMapper.class)
     public void testAllPairs(String Shape, String Size, String Even, String Param1, String Param2, String Param3, String Param4) {
         if (Even.equals("true")) {
             Even = "Yes";
@@ -208,12 +208,12 @@ public class BlackBoxShapeClassfierTest {
         String params = StringUtils.join(parameters, ",");
         String testLine = Shape + "," + Size + "," + Even;// + Param1 + "
         String result = getResult(Shape, parameters, Even, Size);
-        shapeClassifier = new ShapeClassifier();
-        System.out.println(testLine + "," + params + "," + shapeClassifier.evaluateGuess(testLine + "," + params) + "," + result);
+        shapeClassifier = new ShapeClassifierWithFixed();
+        Assert.assertEquals(shapeClassifier.evaluateGuess(testLine + params),result);
     }
 
     @Test
-    @FileParameters(value = "src/test/java/analysis/all_triples.csv", mapper = CsvWithHeaderMapper.class)
+    @FileParameters(value = "/home/igor/An3/src/test/java/all_triples.csv", mapper = CsvWithHeaderMapper.class)
     public void testAllTriples(String Shape, String Size, String Even, String Param1, String Param2, String Param3, String Param4) {
         if (Even.equals("true")) {
             Even = "Yes";
@@ -224,7 +224,7 @@ public class BlackBoxShapeClassfierTest {
         String params = StringUtils.join(parameters, ",");
         String testLine = Shape + "," + Size + "," + Even;// + Param1 + "
         String result = getResult(Shape, parameters, Even, Size);
-        shapeClassifier = new ShapeClassifier();
+        shapeClassifier = new ShapeClassifierWithFixed();
         System.out.println(testLine + "," + params + "," + shapeClassifier.evaluateGuess(testLine + "," + params) + "," + result);
     }
 

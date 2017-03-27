@@ -13,6 +13,9 @@ public class ShapeClassifierOriginal {
 	// return Yes if the guess is correct, No otherwise
 	public String evaluateGuess(String arg) {
 
+
+		f(false,false);
+		//f(false);
 		String shapeGuessResult = "";
 		Integer[] parameters = getParams(arg);
 		String shapeGuess = getShapeGuess(arg);
@@ -227,6 +230,18 @@ public class ShapeClassifierOriginal {
 	boolean print(String str) {
 		System.out.println(str);
 		return true;
+	}
+
+	public void f(boolean a,boolean b) {
+		if (a) {
+			return;
+		}
+
+		if (b) {
+			return;
+		}
+
+		return;
 	}
 }
 
